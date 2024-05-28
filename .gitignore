@@ -50,3 +50,11 @@ Pulsar4X/TestResults/Pulsar4X.TE.Tests.mdf
 Pulsar4X/TestResults/Pulsar4X.TE.Tests_log.ldf
 #Jetbrains Rider files
 .idea/
+
+# Nix
+/.data
+result
+
+# nixago: ignore-linked-files
+/lefthook.yml
+/treefmt.toml
