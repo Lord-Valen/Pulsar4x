@@ -26,6 +26,17 @@ in
         name = "dotnet";
         package = pkgs.dotnetCorePackages.sdk_7_0;
       }
+      { package = pkgs.nuget-to-nix; }
+      {
+        name = "update-pulsar-deps";
+        command = ''
+          tmp="$PRJ_ROOT"/tmp
+
+          dotnet restore "$PRJ_ROOT"/Pulsar4X/Pulsar4X.sln --packages $tmp \
+          && nuget-to-nix $tmp > "$PRJ_ROOT"/nix/pulsar/packages/pulsar4x/deps.nix
+          [ -d "$tmp" ] && rm -r "$PRJ_ROOT"/tmp
+        '';
+      }
     ];
   };
 }
